@@ -90,9 +90,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function generateEmbedCode() {
-        // 這裡需要實現生成實際的嵌入代碼的邏輯
-        // 這只是一個示例
-        return `<iframe src="https://your-countdown-url.com/embed?id=12345" width="300" height="150" frameborder="0"></iframe>`;
+        const title = encodeURIComponent(document.getElementById('title').value);
+        const date = encodeURIComponent(document.getElementById('date').value);
+        const timezone = encodeURIComponent(document.getElementById('timezone').value);
+        const language = encodeURIComponent(document.getElementById('language').value);
+        const textColor = encodeURIComponent(document.getElementById('textColor').value);
+        const bgColor = encodeURIComponent(document.getElementById('bgColor').value);
+        const bgImage = encodeURIComponent(document.getElementById('bgImage').value);
+        const borderRadius = encodeURIComponent(document.getElementById('borderRadius').value);
+
+        const embedUrl = `https://lotushj1.github.io/embed.html?title=${title}&date=${date}&timezone=${timezone}&language=${language}&textColor=${textColor}&bgColor=${bgColor}&bgImage=${bgImage}&borderRadius=${borderRadius}`;
+
+        return `<iframe src="${embedUrl}" width="300" height="150" frameborder="0" style="border-radius: ${borderRadius}px;"></iframe>`;
     }
 
     // 當用戶點擊模態框外部時關閉它
