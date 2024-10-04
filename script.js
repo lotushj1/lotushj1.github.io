@@ -19,24 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const language = document.getElementById('language').value;
         const textColor = document.getElementById('textColor').value;
         const bgColor = document.getElementById('bgColor').value;
-        const bgImage = document.getElementById('bgImage').value;
+        // 刪除 bgImage 相關代碼
         const borderRadius = document.getElementById('borderRadius').value;
 
-        countdownElement.style.color = textColor;
-        countdownElement.style.backgroundColor = bgColor;
-        countdownElement.style.backgroundImage = bgImage ? `url(${bgImage})` : 'none';
-        countdownElement.style.backgroundSize = 'cover';
-        countdownElement.style.backgroundPosition = 'center';
-        countdownElement.style.borderRadius = `${borderRadius}px`;
-
-        countdownElement.innerHTML = `
-            <h3>${title}</h3>
-            <div class="countdown-timer" id="timer">
-                <!-- 倒數計時器內容將在這裡動態更新 -->
-            </div>
-        `;
-
-        startCountdown(date, timezone, language);
+        // 更新預覽的代碼
+        // ...
     }
 
     function startCountdown(targetDate, timezone, language) {
@@ -90,16 +77,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function generateEmbedCode() {
+        const baseUrl = 'https://lotushj1.github.io/';
         const title = encodeURIComponent(document.getElementById('title').value);
         const date = encodeURIComponent(document.getElementById('date').value);
         const timezone = encodeURIComponent(document.getElementById('timezone').value);
         const language = encodeURIComponent(document.getElementById('language').value);
-        const textColor = encodeURIComponent(document.getElementById('textColor').value);
-        const bgColor = encodeURIComponent(document.getElementById('bgColor').value);
-        const bgImage = encodeURIComponent(document.getElementById('bgImage').value);
+        const textColor = encodeURIComponent(document.getElementById('textColor').value.substring(1));
+        const bgColor = encodeURIComponent(document.getElementById('bgColor').value.substring(1));
+        // 刪除 bgImage 相關代碼
         const borderRadius = encodeURIComponent(document.getElementById('borderRadius').value);
 
-        const embedUrl = `https://lotushj1.github.io/embed.html?title=${title}&date=${date}&timezone=${timezone}&language=${language}&textColor=${textColor}&bgColor=${bgColor}&bgImage=${bgImage}&borderRadius=${borderRadius}`;
+        const embedUrl = `${baseUrl}?title=${title}&date=${date}&timezone=${timezone}&language=${language}&textColor=${textColor}&bgColor=${bgColor}&borderRadius=${borderRadius}`;
 
         return `<iframe src="${embedUrl}" width="300" height="150" frameborder="0" style="border-radius: ${borderRadius}px;"></iframe>`;
     }

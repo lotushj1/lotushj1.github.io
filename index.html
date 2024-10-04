@@ -48,11 +48,6 @@
             </div>
             
             <div class="input-group">
-                <label for="bgImage">圖片 URL：</label>
-                <input type="text" id="bgImage" placeholder="輸入圖片 URL">
-            </div>
-            
-            <div class="input-group">
                 <label for="borderRadius">圓角數值 (px)：</label>
                 <input type="number" id="borderRadius" value="10" min="0">
             </div>
@@ -96,6 +91,20 @@
             // 獲取所有設置參數並構建查詢字符串
             // 這個函數的具體實現需要在 script.js 中完成
         }
+        
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('title')) {
+                document.getElementById('title').value = urlParams.get('title');
+            }
+            if (urlParams.has('date')) {
+                document.getElementById('date').value = urlParams.get('date');
+            }
+            // ... 設置其他參數 ...
+
+            // 更新預覽
+            updatePreview();
+        });
     </script>
 </body>
 </html>

@@ -174,3 +174,10 @@ input[type="color"] {
     padding: 8px 15px; /* 減小按鈕的內邊距 */
     margin-top: 10px; /* 與預覽區保持一定距離 */
 }
+
+/* 刪除類似這樣的代碼 */
+/*
+.preview {
+    background-image: url(...);
+}
+*/
